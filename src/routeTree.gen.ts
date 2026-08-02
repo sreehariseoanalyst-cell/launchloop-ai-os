@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardAiTeamRouteImport } from './routes/dashboard.ai-team'
 import { Route as DashboardFounderRouteImport } from './routes/dashboard.founder'
 import { Route as DashboardJourneyRouteImport } from './routes/dashboard.journey'
 
@@ -30,6 +31,11 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardAiTeamRoute = DashboardAiTeamRouteImport.update({
+  id: '/ai-team',
+  path: '/ai-team',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardFounderRoute = DashboardFounderRouteImport.update({
   id: '/founder',
   path: '/founder',
@@ -44,12 +50,14 @@ const DashboardJourneyRoute = DashboardJourneyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/dashboard/ai-team': typeof DashboardAiTeamRoute
   '/dashboard/founder': typeof DashboardFounderRoute
   '/dashboard/journey': typeof DashboardJourneyRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dashboard/ai-team': typeof DashboardAiTeamRoute
   '/dashboard/founder': typeof DashboardFounderRoute
   '/dashboard/journey': typeof DashboardJourneyRoute
   '/dashboard': typeof DashboardIndexRoute
@@ -58,6 +66,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/dashboard/ai-team': typeof DashboardAiTeamRoute
   '/dashboard/founder': typeof DashboardFounderRoute
   '/dashboard/journey': typeof DashboardJourneyRoute
   '/dashboard/': typeof DashboardIndexRoute
@@ -67,15 +76,22 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/dashboard'
+    | '/dashboard/ai-team'
     | '/dashboard/founder'
     | '/dashboard/journey'
     | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard/founder' | '/dashboard/journey' | '/dashboard'
+  to:
+    | '/'
+    | '/dashboard/ai-team'
+    | '/dashboard/founder'
+    | '/dashboard/journey'
+    | '/dashboard'
   id:
     | '__root__'
     | '/'
     | '/dashboard'
+    | '/dashboard/ai-team'
     | '/dashboard/founder'
     | '/dashboard/journey'
     | '/dashboard/'
@@ -109,6 +125,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/ai-team': {
+      id: '/dashboard/ai-team'
+      path: '/ai-team'
+      fullPath: '/dashboard/ai-team'
+      preLoaderRoute: typeof DashboardAiTeamRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/founder': {
       id: '/dashboard/founder'
       path: '/founder'
@@ -127,12 +150,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface DashboardRouteChildren {
+  DashboardAiTeamRoute: typeof DashboardAiTeamRoute
   DashboardFounderRoute: typeof DashboardFounderRoute
   DashboardJourneyRoute: typeof DashboardJourneyRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardAiTeamRoute: DashboardAiTeamRoute,
   DashboardFounderRoute: DashboardFounderRoute,
   DashboardJourneyRoute: DashboardJourneyRoute,
   DashboardIndexRoute: DashboardIndexRoute,
