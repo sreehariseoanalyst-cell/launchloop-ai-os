@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as DashboardFounderRouteImport } from './routes/dashboard.founder'
+import { Route as DashboardJourneyRouteImport } from './routes/dashboard.journey'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,16 +35,23 @@ const DashboardFounderRoute = DashboardFounderRouteImport.update({
   path: '/founder',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardJourneyRoute = DashboardJourneyRouteImport.update({
+  id: '/journey',
+  path: '/journey',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/dashboard/founder': typeof DashboardFounderRoute
+  '/dashboard/journey': typeof DashboardJourneyRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard/founder': typeof DashboardFounderRoute
+  '/dashboard/journey': typeof DashboardJourneyRoute
   '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
@@ -51,14 +59,26 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/dashboard/founder': typeof DashboardFounderRoute
+  '/dashboard/journey': typeof DashboardJourneyRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/dashboard/founder' | '/dashboard/'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/dashboard/founder'
+    | '/dashboard/journey'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard/founder' | '/dashboard'
-  id: '__root__' | '/' | '/dashboard' | '/dashboard/founder' | '/dashboard/'
+  to: '/' | '/dashboard/founder' | '/dashboard/journey' | '/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/dashboard/founder'
+    | '/dashboard/journey'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -96,16 +116,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardFounderRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/journey': {
+      id: '/dashboard/journey'
+      path: '/journey'
+      fullPath: '/dashboard/journey'
+      preLoaderRoute: typeof DashboardJourneyRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
 interface DashboardRouteChildren {
   DashboardFounderRoute: typeof DashboardFounderRoute
+  DashboardJourneyRoute: typeof DashboardJourneyRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardFounderRoute: DashboardFounderRoute,
+  DashboardJourneyRoute: DashboardJourneyRoute,
   DashboardIndexRoute: DashboardIndexRoute,
 }
 
