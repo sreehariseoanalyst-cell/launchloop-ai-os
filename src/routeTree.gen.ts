@@ -16,6 +16,7 @@ import { Route as DashboardAiTeamRouteImport } from './routes/dashboard.ai-team'
 import { Route as DashboardFounderRouteImport } from './routes/dashboard.founder'
 import { Route as DashboardInvestorRouteImport } from './routes/dashboard.investor'
 import { Route as DashboardJourneyRouteImport } from './routes/dashboard.journey'
+import { Route as DashboardMentorRouteImport } from './routes/dashboard.mentor'
 import { Route as DashboardRegistrationRouteImport } from './routes/dashboard.registration'
 import { Route as DashboardStudentRouteImport } from './routes/dashboard.student'
 
@@ -54,6 +55,11 @@ const DashboardJourneyRoute = DashboardJourneyRouteImport.update({
   path: '/journey',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardMentorRoute = DashboardMentorRouteImport.update({
+  id: '/mentor',
+  path: '/mentor',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardRegistrationRoute = DashboardRegistrationRouteImport.update({
   id: '/registration',
   path: '/registration',
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/founder': typeof DashboardFounderRoute
   '/dashboard/investor': typeof DashboardInvestorRoute
   '/dashboard/journey': typeof DashboardJourneyRoute
+  '/dashboard/mentor': typeof DashboardMentorRoute
   '/dashboard/registration': typeof DashboardRegistrationRoute
   '/dashboard/student': typeof DashboardStudentRoute
   '/dashboard/': typeof DashboardIndexRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/dashboard/founder': typeof DashboardFounderRoute
   '/dashboard/investor': typeof DashboardInvestorRoute
   '/dashboard/journey': typeof DashboardJourneyRoute
+  '/dashboard/mentor': typeof DashboardMentorRoute
   '/dashboard/registration': typeof DashboardRegistrationRoute
   '/dashboard/student': typeof DashboardStudentRoute
   '/dashboard': typeof DashboardIndexRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/dashboard/founder': typeof DashboardFounderRoute
   '/dashboard/investor': typeof DashboardInvestorRoute
   '/dashboard/journey': typeof DashboardJourneyRoute
+  '/dashboard/mentor': typeof DashboardMentorRoute
   '/dashboard/registration': typeof DashboardRegistrationRoute
   '/dashboard/student': typeof DashboardStudentRoute
   '/dashboard/': typeof DashboardIndexRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/dashboard/founder'
     | '/dashboard/investor'
     | '/dashboard/journey'
+    | '/dashboard/mentor'
     | '/dashboard/registration'
     | '/dashboard/student'
     | '/dashboard/'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/dashboard/founder'
     | '/dashboard/investor'
     | '/dashboard/journey'
+    | '/dashboard/mentor'
     | '/dashboard/registration'
     | '/dashboard/student'
     | '/dashboard'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/dashboard/founder'
     | '/dashboard/investor'
     | '/dashboard/journey'
+    | '/dashboard/mentor'
     | '/dashboard/registration'
     | '/dashboard/student'
     | '/dashboard/'
@@ -189,6 +201,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardJourneyRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/mentor': {
+      id: '/dashboard/mentor'
+      path: '/mentor'
+      fullPath: '/dashboard/mentor'
+      preLoaderRoute: typeof DashboardMentorRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/registration': {
       id: '/dashboard/registration'
       path: '/registration'
@@ -211,6 +230,7 @@ interface DashboardRouteChildren {
   DashboardFounderRoute: typeof DashboardFounderRoute
   DashboardInvestorRoute: typeof DashboardInvestorRoute
   DashboardJourneyRoute: typeof DashboardJourneyRoute
+  DashboardMentorRoute: typeof DashboardMentorRoute
   DashboardRegistrationRoute: typeof DashboardRegistrationRoute
   DashboardStudentRoute: typeof DashboardStudentRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
@@ -221,6 +241,7 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardFounderRoute: DashboardFounderRoute,
   DashboardInvestorRoute: DashboardInvestorRoute,
   DashboardJourneyRoute: DashboardJourneyRoute,
+  DashboardMentorRoute: DashboardMentorRoute,
   DashboardRegistrationRoute: DashboardRegistrationRoute,
   DashboardStudentRoute: DashboardStudentRoute,
   DashboardIndexRoute: DashboardIndexRoute,
