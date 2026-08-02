@@ -14,6 +14,7 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as DashboardAiTeamRouteImport } from './routes/dashboard.ai-team'
 import { Route as DashboardFounderRouteImport } from './routes/dashboard.founder'
+import { Route as DashboardInvestorRouteImport } from './routes/dashboard.investor'
 import { Route as DashboardJourneyRouteImport } from './routes/dashboard.journey'
 import { Route as DashboardRegistrationRouteImport } from './routes/dashboard.registration'
 import { Route as DashboardStudentRouteImport } from './routes/dashboard.student'
@@ -43,6 +44,11 @@ const DashboardFounderRoute = DashboardFounderRouteImport.update({
   path: '/founder',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardInvestorRoute = DashboardInvestorRouteImport.update({
+  id: '/investor',
+  path: '/investor',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardJourneyRoute = DashboardJourneyRouteImport.update({
   id: '/journey',
   path: '/journey',
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRouteWithChildren
   '/dashboard/ai-team': typeof DashboardAiTeamRoute
   '/dashboard/founder': typeof DashboardFounderRoute
+  '/dashboard/investor': typeof DashboardInvestorRoute
   '/dashboard/journey': typeof DashboardJourneyRoute
   '/dashboard/registration': typeof DashboardRegistrationRoute
   '/dashboard/student': typeof DashboardStudentRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard/ai-team': typeof DashboardAiTeamRoute
   '/dashboard/founder': typeof DashboardFounderRoute
+  '/dashboard/investor': typeof DashboardInvestorRoute
   '/dashboard/journey': typeof DashboardJourneyRoute
   '/dashboard/registration': typeof DashboardRegistrationRoute
   '/dashboard/student': typeof DashboardStudentRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRouteWithChildren
   '/dashboard/ai-team': typeof DashboardAiTeamRoute
   '/dashboard/founder': typeof DashboardFounderRoute
+  '/dashboard/investor': typeof DashboardInvestorRoute
   '/dashboard/journey': typeof DashboardJourneyRoute
   '/dashboard/registration': typeof DashboardRegistrationRoute
   '/dashboard/student': typeof DashboardStudentRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/dashboard/ai-team'
     | '/dashboard/founder'
+    | '/dashboard/investor'
     | '/dashboard/journey'
     | '/dashboard/registration'
     | '/dashboard/student'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard/ai-team'
     | '/dashboard/founder'
+    | '/dashboard/investor'
     | '/dashboard/journey'
     | '/dashboard/registration'
     | '/dashboard/student'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/dashboard/ai-team'
     | '/dashboard/founder'
+    | '/dashboard/investor'
     | '/dashboard/journey'
     | '/dashboard/registration'
     | '/dashboard/student'
@@ -163,6 +175,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardFounderRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/investor': {
+      id: '/dashboard/investor'
+      path: '/investor'
+      fullPath: '/dashboard/investor'
+      preLoaderRoute: typeof DashboardInvestorRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/journey': {
       id: '/dashboard/journey'
       path: '/journey'
@@ -190,6 +209,7 @@ declare module '@tanstack/react-router' {
 interface DashboardRouteChildren {
   DashboardAiTeamRoute: typeof DashboardAiTeamRoute
   DashboardFounderRoute: typeof DashboardFounderRoute
+  DashboardInvestorRoute: typeof DashboardInvestorRoute
   DashboardJourneyRoute: typeof DashboardJourneyRoute
   DashboardRegistrationRoute: typeof DashboardRegistrationRoute
   DashboardStudentRoute: typeof DashboardStudentRoute
@@ -199,6 +219,7 @@ interface DashboardRouteChildren {
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardAiTeamRoute: DashboardAiTeamRoute,
   DashboardFounderRoute: DashboardFounderRoute,
+  DashboardInvestorRoute: DashboardInvestorRoute,
   DashboardJourneyRoute: DashboardJourneyRoute,
   DashboardRegistrationRoute: DashboardRegistrationRoute,
   DashboardStudentRoute: DashboardStudentRoute,
