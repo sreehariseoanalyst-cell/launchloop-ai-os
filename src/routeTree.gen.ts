@@ -10,157 +10,223 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as DashboardRouteImport } from './routes/dashboard'
-import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
-import { Route as DashboardAiTeamRouteImport } from './routes/dashboard.ai-team'
-import { Route as DashboardFounderRouteImport } from './routes/dashboard.founder'
-import { Route as DashboardInvestorRouteImport } from './routes/dashboard.investor'
-import { Route as DashboardJourneyRouteImport } from './routes/dashboard.journey'
-import { Route as DashboardMentorRouteImport } from './routes/dashboard.mentor'
-import { Route as DashboardRegistrationRouteImport } from './routes/dashboard.registration'
-import { Route as DashboardStudentRouteImport } from './routes/dashboard.student'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as AuthenticatedConnectionsRouteImport } from './routes/_authenticated/connections'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedDiscoverRouteImport } from './routes/_authenticated/discover'
+import { Route as AuthenticatedNotificationsRouteImport } from './routes/_authenticated/notifications'
+import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
+import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
+import { Route as AuthLoginRouteImport } from './routes/auth.login'
+import { Route as AuthSignupRouteImport } from './routes/auth.signup'
+import { Route as AuthenticatedMessagesIndexRouteImport } from './routes/_authenticated/messages.index'
+import { Route as AuthenticatedMessagesConversationIdRouteImport } from './routes/_authenticated/messages.$conversationId'
+import { Route as AuthenticatedProfileIndexRouteImport } from './routes/_authenticated/profile.index'
+import { Route as AuthenticatedProfileIdRouteImport } from './routes/_authenticated/profile.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardRoute = DashboardRouteImport.update({
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedConnectionsRoute =
+  AuthenticatedConnectionsRouteImport.update({
+    id: '/connections',
+    path: '/connections',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDiscoverRoute = AuthenticatedDiscoverRouteImport.update({
+  id: '/discover',
+  path: '/discover',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedNotificationsRoute =
+  AuthenticatedNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
+  id: '/auth/forgot-password',
+  path: '/auth/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardIndexRoute = DashboardIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => DashboardRoute,
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/auth/login',
+  path: '/auth/login',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardAiTeamRoute = DashboardAiTeamRouteImport.update({
-  id: '/ai-team',
-  path: '/ai-team',
-  getParentRoute: () => DashboardRoute,
+const AuthSignupRoute = AuthSignupRouteImport.update({
+  id: '/auth/signup',
+  path: '/auth/signup',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardFounderRoute = DashboardFounderRouteImport.update({
-  id: '/founder',
-  path: '/founder',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardInvestorRoute = DashboardInvestorRouteImport.update({
-  id: '/investor',
-  path: '/investor',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardJourneyRoute = DashboardJourneyRouteImport.update({
-  id: '/journey',
-  path: '/journey',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardMentorRoute = DashboardMentorRouteImport.update({
-  id: '/mentor',
-  path: '/mentor',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardRegistrationRoute = DashboardRegistrationRouteImport.update({
-  id: '/registration',
-  path: '/registration',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardStudentRoute = DashboardStudentRouteImport.update({
-  id: '/student',
-  path: '/student',
-  getParentRoute: () => DashboardRoute,
+const AuthenticatedMessagesIndexRoute =
+  AuthenticatedMessagesIndexRouteImport.update({
+    id: '/messages/',
+    path: '/messages/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMessagesConversationIdRoute =
+  AuthenticatedMessagesConversationIdRouteImport.update({
+    id: '/messages/$conversationId',
+    path: '/messages/$conversationId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProfileIndexRoute =
+  AuthenticatedProfileIndexRouteImport.update({
+    id: '/profile/',
+    path: '/profile/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProfileIdRoute = AuthenticatedProfileIdRouteImport.update({
+  id: '/profile/$id',
+  path: '/profile/$id',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/auth': typeof AuthRoute
-  '/dashboard': typeof DashboardRouteWithChildren
-  '/dashboard/ai-team': typeof DashboardAiTeamRoute
-  '/dashboard/founder': typeof DashboardFounderRoute
-  '/dashboard/investor': typeof DashboardInvestorRoute
-  '/dashboard/journey': typeof DashboardJourneyRoute
-  '/dashboard/mentor': typeof DashboardMentorRoute
-  '/dashboard/registration': typeof DashboardRegistrationRoute
-  '/dashboard/student': typeof DashboardStudentRoute
-  '/dashboard/': typeof DashboardIndexRoute
+  '/onboarding': typeof OnboardingRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/connections': typeof AuthenticatedConnectionsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/discover': typeof AuthenticatedDiscoverRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/settings': typeof AuthenticatedSettingsRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/signup': typeof AuthSignupRoute
+  '/messages/$conversationId': typeof AuthenticatedMessagesConversationIdRoute
+  '/profile/$id': typeof AuthenticatedProfileIdRoute
+  '/messages/': typeof AuthenticatedMessagesIndexRoute
+  '/profile/': typeof AuthenticatedProfileIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/auth': typeof AuthRoute
-  '/dashboard/ai-team': typeof DashboardAiTeamRoute
-  '/dashboard/founder': typeof DashboardFounderRoute
-  '/dashboard/investor': typeof DashboardInvestorRoute
-  '/dashboard/journey': typeof DashboardJourneyRoute
-  '/dashboard/mentor': typeof DashboardMentorRoute
-  '/dashboard/registration': typeof DashboardRegistrationRoute
-  '/dashboard/student': typeof DashboardStudentRoute
-  '/dashboard': typeof DashboardIndexRoute
+  '/onboarding': typeof OnboardingRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/connections': typeof AuthenticatedConnectionsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/discover': typeof AuthenticatedDiscoverRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/settings': typeof AuthenticatedSettingsRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/signup': typeof AuthSignupRoute
+  '/messages/$conversationId': typeof AuthenticatedMessagesConversationIdRoute
+  '/profile/$id': typeof AuthenticatedProfileIdRoute
+  '/messages': typeof AuthenticatedMessagesIndexRoute
+  '/profile': typeof AuthenticatedProfileIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/auth': typeof AuthRoute
-  '/dashboard': typeof DashboardRouteWithChildren
-  '/dashboard/ai-team': typeof DashboardAiTeamRoute
-  '/dashboard/founder': typeof DashboardFounderRoute
-  '/dashboard/investor': typeof DashboardInvestorRoute
-  '/dashboard/journey': typeof DashboardJourneyRoute
-  '/dashboard/mentor': typeof DashboardMentorRoute
-  '/dashboard/registration': typeof DashboardRegistrationRoute
-  '/dashboard/student': typeof DashboardStudentRoute
-  '/dashboard/': typeof DashboardIndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/onboarding': typeof OnboardingRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/_authenticated/connections': typeof AuthenticatedConnectionsRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/discover': typeof AuthenticatedDiscoverRoute
+  '/_authenticated/notifications': typeof AuthenticatedNotificationsRoute
+  '/_authenticated/settings': typeof AuthenticatedSettingsRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/signup': typeof AuthSignupRoute
+  '/_authenticated/messages/$conversationId': typeof AuthenticatedMessagesConversationIdRoute
+  '/_authenticated/profile/$id': typeof AuthenticatedProfileIdRoute
+  '/_authenticated/messages/': typeof AuthenticatedMessagesIndexRoute
+  '/_authenticated/profile/': typeof AuthenticatedProfileIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/auth'
+    | '/onboarding'
+    | '/reset-password'
+    | '/connections'
     | '/dashboard'
-    | '/dashboard/ai-team'
-    | '/dashboard/founder'
-    | '/dashboard/investor'
-    | '/dashboard/journey'
-    | '/dashboard/mentor'
-    | '/dashboard/registration'
-    | '/dashboard/student'
-    | '/dashboard/'
+    | '/discover'
+    | '/notifications'
+    | '/settings'
+    | '/auth/forgot-password'
+    | '/auth/login'
+    | '/auth/signup'
+    | '/messages/$conversationId'
+    | '/profile/$id'
+    | '/messages/'
+    | '/profile/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/auth'
-    | '/dashboard/ai-team'
-    | '/dashboard/founder'
-    | '/dashboard/investor'
-    | '/dashboard/journey'
-    | '/dashboard/mentor'
-    | '/dashboard/registration'
-    | '/dashboard/student'
+    | '/onboarding'
+    | '/reset-password'
+    | '/connections'
     | '/dashboard'
+    | '/discover'
+    | '/notifications'
+    | '/settings'
+    | '/auth/forgot-password'
+    | '/auth/login'
+    | '/auth/signup'
+    | '/messages/$conversationId'
+    | '/profile/$id'
+    | '/messages'
+    | '/profile'
   id:
     | '__root__'
     | '/'
-    | '/auth'
-    | '/dashboard'
-    | '/dashboard/ai-team'
-    | '/dashboard/founder'
-    | '/dashboard/investor'
-    | '/dashboard/journey'
-    | '/dashboard/mentor'
-    | '/dashboard/registration'
-    | '/dashboard/student'
-    | '/dashboard/'
+    | '/_authenticated'
+    | '/onboarding'
+    | '/reset-password'
+    | '/_authenticated/connections'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/discover'
+    | '/_authenticated/notifications'
+    | '/_authenticated/settings'
+    | '/auth/forgot-password'
+    | '/auth/login'
+    | '/auth/signup'
+    | '/_authenticated/messages/$conversationId'
+    | '/_authenticated/profile/$id'
+    | '/_authenticated/messages/'
+    | '/_authenticated/profile/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthRoute: typeof AuthRoute
-  DashboardRoute: typeof DashboardRouteWithChildren
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  OnboardingRoute: typeof OnboardingRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
+  AuthLoginRoute: typeof AuthLoginRoute
+  AuthSignupRoute: typeof AuthSignupRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -172,110 +238,161 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dashboard': {
-      id: '/dashboard'
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/connections': {
+      id: '/_authenticated/connections'
+      path: '/connections'
+      fullPath: '/connections'
+      preLoaderRoute: typeof AuthenticatedConnectionsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/discover': {
+      id: '/_authenticated/discover'
+      path: '/discover'
+      fullPath: '/discover'
+      preLoaderRoute: typeof AuthenticatedDiscoverRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/notifications': {
+      id: '/_authenticated/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof AuthenticatedNotificationsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AuthenticatedSettingsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/auth/forgot-password': {
+      id: '/auth/forgot-password'
+      path: '/auth/forgot-password'
+      fullPath: '/auth/forgot-password'
+      preLoaderRoute: typeof AuthForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dashboard/': {
-      id: '/dashboard/'
-      path: '/'
-      fullPath: '/dashboard/'
-      preLoaderRoute: typeof DashboardIndexRouteImport
-      parentRoute: typeof DashboardRoute
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/dashboard/ai-team': {
-      id: '/dashboard/ai-team'
-      path: '/ai-team'
-      fullPath: '/dashboard/ai-team'
-      preLoaderRoute: typeof DashboardAiTeamRouteImport
-      parentRoute: typeof DashboardRoute
+    '/auth/signup': {
+      id: '/auth/signup'
+      path: '/auth/signup'
+      fullPath: '/auth/signup'
+      preLoaderRoute: typeof AuthSignupRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/dashboard/founder': {
-      id: '/dashboard/founder'
-      path: '/founder'
-      fullPath: '/dashboard/founder'
-      preLoaderRoute: typeof DashboardFounderRouteImport
-      parentRoute: typeof DashboardRoute
+    '/_authenticated/messages/': {
+      id: '/_authenticated/messages/'
+      path: '/messages'
+      fullPath: '/messages/'
+      preLoaderRoute: typeof AuthenticatedMessagesIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/dashboard/investor': {
-      id: '/dashboard/investor'
-      path: '/investor'
-      fullPath: '/dashboard/investor'
-      preLoaderRoute: typeof DashboardInvestorRouteImport
-      parentRoute: typeof DashboardRoute
+    '/_authenticated/messages/$conversationId': {
+      id: '/_authenticated/messages/$conversationId'
+      path: '/messages/$conversationId'
+      fullPath: '/messages/$conversationId'
+      preLoaderRoute: typeof AuthenticatedMessagesConversationIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/dashboard/journey': {
-      id: '/dashboard/journey'
-      path: '/journey'
-      fullPath: '/dashboard/journey'
-      preLoaderRoute: typeof DashboardJourneyRouteImport
-      parentRoute: typeof DashboardRoute
+    '/_authenticated/profile/': {
+      id: '/_authenticated/profile/'
+      path: '/profile'
+      fullPath: '/profile/'
+      preLoaderRoute: typeof AuthenticatedProfileIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/dashboard/mentor': {
-      id: '/dashboard/mentor'
-      path: '/mentor'
-      fullPath: '/dashboard/mentor'
-      preLoaderRoute: typeof DashboardMentorRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/dashboard/registration': {
-      id: '/dashboard/registration'
-      path: '/registration'
-      fullPath: '/dashboard/registration'
-      preLoaderRoute: typeof DashboardRegistrationRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/dashboard/student': {
-      id: '/dashboard/student'
-      path: '/student'
-      fullPath: '/dashboard/student'
-      preLoaderRoute: typeof DashboardStudentRouteImport
-      parentRoute: typeof DashboardRoute
+    '/_authenticated/profile/$id': {
+      id: '/_authenticated/profile/$id'
+      path: '/profile/$id'
+      fullPath: '/profile/$id'
+      preLoaderRoute: typeof AuthenticatedProfileIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
   }
 }
 
-interface DashboardRouteChildren {
-  DashboardAiTeamRoute: typeof DashboardAiTeamRoute
-  DashboardFounderRoute: typeof DashboardFounderRoute
-  DashboardInvestorRoute: typeof DashboardInvestorRoute
-  DashboardJourneyRoute: typeof DashboardJourneyRoute
-  DashboardMentorRoute: typeof DashboardMentorRoute
-  DashboardRegistrationRoute: typeof DashboardRegistrationRoute
-  DashboardStudentRoute: typeof DashboardStudentRoute
-  DashboardIndexRoute: typeof DashboardIndexRoute
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedConnectionsRoute: typeof AuthenticatedConnectionsRoute
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedDiscoverRoute: typeof AuthenticatedDiscoverRoute
+  AuthenticatedNotificationsRoute: typeof AuthenticatedNotificationsRoute
+  AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
+  AuthenticatedMessagesConversationIdRoute: typeof AuthenticatedMessagesConversationIdRoute
+  AuthenticatedProfileIdRoute: typeof AuthenticatedProfileIdRoute
+  AuthenticatedMessagesIndexRoute: typeof AuthenticatedMessagesIndexRoute
+  AuthenticatedProfileIndexRoute: typeof AuthenticatedProfileIndexRoute
 }
 
-const DashboardRouteChildren: DashboardRouteChildren = {
-  DashboardAiTeamRoute: DashboardAiTeamRoute,
-  DashboardFounderRoute: DashboardFounderRoute,
-  DashboardInvestorRoute: DashboardInvestorRoute,
-  DashboardJourneyRoute: DashboardJourneyRoute,
-  DashboardMentorRoute: DashboardMentorRoute,
-  DashboardRegistrationRoute: DashboardRegistrationRoute,
-  DashboardStudentRoute: DashboardStudentRoute,
-  DashboardIndexRoute: DashboardIndexRoute,
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedConnectionsRoute: AuthenticatedConnectionsRoute,
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedDiscoverRoute: AuthenticatedDiscoverRoute,
+  AuthenticatedNotificationsRoute: AuthenticatedNotificationsRoute,
+  AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
+  AuthenticatedMessagesConversationIdRoute:
+    AuthenticatedMessagesConversationIdRoute,
+  AuthenticatedProfileIdRoute: AuthenticatedProfileIdRoute,
+  AuthenticatedMessagesIndexRoute: AuthenticatedMessagesIndexRoute,
+  AuthenticatedProfileIndexRoute: AuthenticatedProfileIndexRoute,
 }
 
-const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
-  DashboardRouteChildren,
-)
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthRoute: AuthRoute,
-  DashboardRoute: DashboardRouteWithChildren,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  OnboardingRoute: OnboardingRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  AuthForgotPasswordRoute: AuthForgotPasswordRoute,
+  AuthLoginRoute: AuthLoginRoute,
+  AuthSignupRoute: AuthSignupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
