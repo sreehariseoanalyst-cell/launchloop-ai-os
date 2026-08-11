@@ -1,4 +1,4 @@
-import { Link, Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { Bell, Compass, Home, LogOut, MessageSquare, Settings, User, Users } from "lucide-react";
 
@@ -27,7 +27,7 @@ const nav = [
   { to: "/profile", label: "Profile", icon: User },
 ] as const;
 
-export function AppShell() {
+export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -146,7 +146,7 @@ export function AppShell() {
             </DropdownMenu>
           </header>
 
-          <Outlet />
+          {children}
         </div>
       </div>
 
