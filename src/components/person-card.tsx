@@ -13,7 +13,7 @@ export function PersonCard({
 }: {
   person: Profile;
   action?: React.ReactNode;
-  reason?: string;
+  reason?: string | undefined;
 }) {
   return (
     <div className="soft-card flex flex-col gap-3 p-4">

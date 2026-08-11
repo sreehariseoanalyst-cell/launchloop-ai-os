@@ -26,7 +26,7 @@ export function NotificationBell({
   userId,
 }: {
   notifications: Notification[];
-  userId?: string;
+  userId?: string | undefined;
 }) {
   const mark = useMarkNotifications(userId);
   const unread = notifications.filter((n) => !n.is_read).length;
